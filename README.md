@@ -1,2 +1,2 @@
 # practice
-tentative code in C/C++
+tentative code in JAVA
