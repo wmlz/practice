@@ -25,6 +25,7 @@ public class IdentifyPattern {
             if (list[i].isYang())
                 System.out.println(sdf.format(list[i].getDate()));
         }
+        infile.close();
     }
 
     //写一个读取文件总行数的方法
