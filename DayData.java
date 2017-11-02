@@ -39,4 +39,18 @@ public class DayData {
         else
             return false;
     }
+
+    public boolean isHammer() {
+        if (close > open) {       //如果这天是阳线
+            if (open - low >= 2 * (close - open) && high - close <= 0.2 * (high - low))  // 下影线的长度至少达到实体高度的2倍 && 上影线小于整体长度的20%
+                return true;
+        } else if (close < open) {    //如果这天是阴线
+            if (close - open >= 2 * (open - close) && high - open <= 0.2 * (high - low))
+                return true;
+        } else if (close == open) {
+            if (high - open <= 0.2 * (high - low))
+                return true;
+        }
+        return false;
+    }
 }
