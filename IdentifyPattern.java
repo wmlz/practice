@@ -16,6 +16,16 @@ public class IdentifyPattern {
         Date start = sdf.parse(startDate);
         Date end = sdf.parse(endDate);
 
+        while (start.after(end)) {
+            JOptionPane.showMessageDialog(null, "The date you entered is wrong, please enter again");
+            //用dialogbox接收用户输入的起止日期
+            startDate = JOptionPane.showInputDialog("Please enter the start date with the yyyy-MM-dd format");
+            endDate = JOptionPane.showInputDialog("Please enter the end date with the yyyy-MM-dd format");
+            //把日期从str转换成Date
+            start = sdf.parse(startDate);
+            end = sdf.parse(endDate);
+        }
+
         int lineNum = getFileLineNum(path);    //读取文件总行数
         int dayNum = lineNum - 1;             //总行数减去第一行表头得到天数
         DayData[] list = new DayData[dayNum];  //创建一个数组储存数据
@@ -57,6 +67,7 @@ public class IdentifyPattern {
 
 
         if (!(startIndex == -1 || endIndex == -1)) {
+            //找锤子线
             if (patterNum == 1) {
                 boolean hasHammer = false;
                 for (int i = startIndex; i <= endIndex; i++) {
@@ -68,6 +79,29 @@ public class IdentifyPattern {
                 if (!hasHammer)
                     System.out.println("Pattern NOT Found");
             }
+            //找出三白兵
+            if (patterNum == 2) {
+                boolean hasTWS = false;
+                for (int i = startIndex; i <= (endIndex - 2); i++) {
+                    if (list[i].isYang() && list[i + 1].isYang() && list[i + 2].isYang())  //判断三连阳
+                        if (list[i + 1].getClose() >= list[i].getClose() && list[i + 1].getClose() <= list[i + 2].getClose())   //每天的收盘价高于前一天的收盘价
+                            //判断开盘价的前一天实体的上50%
+                            if (list[i + 1].getOpen() >= 0.5 * (list[i].getOpen() + list[i].getClose()) && list[i + 1].getOpen() <= list[i].getClose() && list[i + 2].getOpen() >= 0.5 * (list[i + 1].getOpen() + list[i + 1].getClose()) && list[i + 2].getOpen() <= list[i + 1].getClose())
+                            //每天的最高价接近收盘价（可以删除）
+                            //        if(list[i].getHigh()/list[i].getClose()<=0.2 && list[i+1].getHigh()/list[i+1].getClose()<=1.2 && list[i+2].getHigh()/list[i+2].getClose()<=1.2)
+                            {
+                                hasTWS = true;
+                                System.out.println("Pattern Found:  " + sdf.format(list[i + 2].getDate()));
+                            }
+                }
+                if (!hasTWS)
+                    System.out.println("Pattern NOT Found");
+            }
+            /*找出金叉
+            if(patterNum==3){
+
+            }
+            */
         }
         infile.close();
         input.close();
