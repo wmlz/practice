@@ -41,10 +41,10 @@ public class DayData {
     }
 
     public boolean isHammer() {
-        if (close > open) {       //如果这天是阳线
-            if (open - low >= 2 * (close - open) && high - close <= 0.2 * (high - low))  // 下影线的长度至少达到实体高度的2倍 && 上影线小于整体长度的20%
+        if (close > open) {       //if this day rises
+            if (open - low >= 2 * (close - open) && high - close <= 0.2 * (high - low))  // The length of the lower wick is at least 2 times the height of the body && The length of the upper wick is less than 20% of total length
                 return true;
-        } else if (close < open) {    //如果这天是阴线
+        } else if (close < open) {    //if this day falls
             if (close - open >= 2 * (open - close) && high - open <= 0.2 * (high - low))
                 return true;
         } else if (close == open) {
