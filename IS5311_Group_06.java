@@ -1,10 +1,11 @@
 import java.io.*;
+import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 public class IS5311_Group_06 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ParseException,FileNotFoundException{
         String path = "C:\\Users\\wmlz-note\\Desktop\\AAPL.csv";
         File file = new File(path);
         Scanner infile = new Scanner(file);
@@ -26,7 +27,13 @@ public class IS5311_Group_06 {
             end = sdf.parse(endDate);
         }
 
-        int lineNum = getFileLineNum(path);    //read the total line number of the file
+        int lineNum = 0;
+        try {
+            lineNum = getFileLineNum(path);    //read the total line number of the file
+        } catch (FileNotFoundException e) {
+            System.out.println("The file can NOT found");
+        }
+
         int dayNum = lineNum - 1;             //the line number -1 is the total day number
         DayData[] list = new DayData[dayNum];  //create a array to store the data
         infile.nextLine();    //skip the first line of the file
@@ -154,7 +161,7 @@ public class IS5311_Group_06 {
     }
 
     //a method to identify the total line number of a file
-    private static int getFileLineNum(String str) throws IOException {
+    private static int getFileLineNum(String str) throws FileNotFoundException {
         File file = new File(str);
         Scanner infile = new Scanner(file);
         int lineNum = 0;
