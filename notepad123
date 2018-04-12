@@ -234,16 +234,11 @@ public class notepad123 extends JFrame {
 
             // save file
             if (e.getSource() == menuitem1_3) {
-                if (filename == null) {
+                if (filename == null)
                     filename = setFilename();
-                    saveToFile(filename);
-                    isSaved = true;
-                    savedContent = txa.getText();
-                } else {
-                    saveToFile(filename);
-                    isSaved = true;
-                    savedContent = txa.getText();
-                }
+                saveToFile(filename);
+                isSaved = true;
+                savedContent = txa.getText();
             }
 
             //save as file
