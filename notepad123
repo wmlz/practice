@@ -20,8 +20,8 @@ public class notepad123 extends JFrame {
     JMenu menu1, menu2, menu3;
     //create menuitem, radiobtn, checkbox and button
     JMenuItem menuitem1_1, menuitem1_2, menuitem1_3, menuitem1_4, menuitem1_5, popitem1, popitem2;
-    JRadioButton radiobtn1, radiobtn2, radiobtn3;
-    JCheckBox checkbox1, checkbox2;
+    JRadioButtonMenuItem radiobtn1, radiobtn2, radiobtn3;
+    JCheckBoxMenuItem checkbox1, checkbox2;
     JButton btn1, btn2, btn3, btn4, btn5;
     //create textarea
     JTextArea txa;
@@ -65,11 +65,11 @@ public class notepad123 extends JFrame {
         menuitem1_5 = new JMenuItem("Exit");
         popitem1 = new JMenuItem("Copy");
         popitem2 = new JMenuItem("Paste");
-        radiobtn1 = new JRadioButton("Monospaced");
-        radiobtn2 = new JRadioButton("Serif");
-        radiobtn3 = new JRadioButton("SansSerif");
-        checkbox1 = new JCheckBox("Italic");
-        checkbox2 = new JCheckBox("Bold");
+        radiobtn1 = new JRadioButtonMenuItem("Monospaced");
+        radiobtn2 = new JRadioButtonMenuItem("Serif");
+        radiobtn3 = new JRadioButtonMenuItem("SansSerif");
+        checkbox1 = new JCheckBoxMenuItem("Italic");
+        checkbox2 = new JCheckBoxMenuItem("Bold");
         btn1 = new JButton("Copy");
         btn2 = new JButton("Paste");
         btn3 = new JButton("Red");
