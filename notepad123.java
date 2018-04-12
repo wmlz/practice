@@ -13,9 +13,9 @@ public class notepad123 extends JFrame {
     //create menubar
     JMenuBar menubar;
     //create mune
-    JMenu menu1, menu2, menu3;
+    JMenu menu1, menu2, menu3, menu4;
     //create menuitem, radiobtn, checkbox and button
-    JMenuItem menuitem1_1, menuitem1_2, menuitem1_3, menuitem1_4, menuitem1_5, popitem1, popitem2;
+    JMenuItem menuitem1_1, menuitem1_2, menuitem1_3, menuitem1_4, menuitem1_5, popitem1, popitem2,menuitem4_1,menuitem4_2,menuitem4_3;
     JRadioButtonMenuItem radiobtn1, radiobtn2, radiobtn3;
     JCheckBoxMenuItem checkbox1, checkbox2;
     JButton btn1, btn2, btn3, btn4, btn5;
@@ -51,6 +51,7 @@ public class notepad123 extends JFrame {
         menu1 = new JMenu("File");
         menu2 = new JMenu("Text");
         menu3 = new JMenu("Font Size");
+        menu4 = new JMenu("Font Color");
         popupMenu = new JPopupMenu();
 
         //set menuitem name
@@ -59,6 +60,9 @@ public class notepad123 extends JFrame {
         menuitem1_3 = new JMenuItem("Save");
         menuitem1_4 = new JMenuItem("Save as");
         menuitem1_5 = new JMenuItem("Exit");
+        menuitem4_1 = new JMenuItem("Red");
+        menuitem4_2 = new JMenuItem("Black");
+        menuitem4_3 = new JMenuItem("Blue");
         popitem1 = new JMenuItem("Copy");
         popitem2 = new JMenuItem("Paste");
         radiobtn1 = new JRadioButtonMenuItem("Monospaced");
@@ -82,6 +86,9 @@ public class notepad123 extends JFrame {
         menuitem1_3.addActionListener(new ButtonListener());
         menuitem1_4.addActionListener(new ButtonListener());
         menuitem1_5.addActionListener(new ButtonListener());
+        menuitem4_1.addActionListener(new ButtonListener());
+        menuitem4_2.addActionListener(new ButtonListener());
+        menuitem4_3.addActionListener(new ButtonListener());
         radiobtn1.addActionListener(new ButtonListener());
         radiobtn2.addActionListener(new ButtonListener());
         radiobtn3.addActionListener(new ButtonListener());
@@ -163,12 +170,16 @@ public class notepad123 extends JFrame {
         menu2.add(checkbox1);
         menu2.add(checkbox2);
         menu3.add(fontlist);
+        menu4.add(menuitem4_1);
+        menu4.add(menuitem4_2);
+        menu4.add(menuitem4_3);
         popupMenu.add(popitem1);
         popupMenu.add(popitem2);
 
         menubar.add(menu1);
         menubar.add(menu2);
         menubar.add(menu3);
+        menubar.add(menu4);
         toolbar.add(btn1);
         toolbar.add(btn2);
         toolbar.addSeparator();    //add separator
@@ -317,6 +328,18 @@ public class notepad123 extends JFrame {
             // set selection color to blue
             if (e.getSource() == btn5) {
                 txa.setSelectionColor(Color.blue);
+            }
+            //set font color to red
+            if(e.getSource() == menuitem4_1) {
+                txa.setForeground(Color.red);
+            }
+            // set font color to black
+            if(e.getSource() == menuitem4_2) {
+                txa.setForeground(Color.black);
+            }
+            // set font color to blue
+            if(e.getSource() == menuitem4_3) {
+                txa.setForeground(Color.blue);
             }
         }
     }
